@@ -1,3 +1,5 @@
+// This code makes the robot follow a path that we can draw a line on with I.E tape. 
+
 #define LS 2 // left sensor
 #define RS 3 // right sensor
 #define LM1 5 // left motor M1a
