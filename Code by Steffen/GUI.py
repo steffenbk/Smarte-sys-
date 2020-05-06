@@ -31,33 +31,32 @@ db_cursor = ""
 
 f = Figure(figsize=(5,4), dpi=100)
 a = f.add_subplot(111)
-intchange= 90000000
 
-
-def animate(i):
-    c = app.cursor
-    c.execute("SELECT time, windspeed FROM data")
-    fetch = c.fetchall()
-
-    Xaxes = [x for (x, y) in fetch]
-    Yaxes = [y for (x, y) in fetch]
-
-
-    #test3 = np.array(test)
-    pltYaxes = np.array(Yaxes)
-    pltXaxes = np.array(Xaxes)
-
-   # pullData = open('test2.txt','r').read()
-    #dataArray = pullData.split('\n')
-    #xar=[]
-    #yar=[]
-   # for eachLine in dataArray:
-        #if len(eachLine)>1:
-            #x,y = eachLine.split(',')
-            #xar.append(int(x))
-           # yar.append(int(y))
-    a.clear()
-    a.plot(pltXaxes,pltYaxes)
+    
+    def animate(i):
+        c = app.cursor
+        c.execute("SELECT time, windspeed FROM data")
+        fetch = c.fetchall()
+    
+        Xaxes = [x for (x, y) in fetch]
+        Yaxes = [y for (x, y) in fetch]
+    
+    
+        #test3 = np.array(test)
+        pltYaxes = np.array(Yaxes)
+        pltXaxes = np.array(Xaxes)
+    
+       # pullData = open('test2.txt','r').read()
+        #dataArray = pullData.split('\n')
+        #xar=[]
+        #yar=[]
+       # for eachLine in dataArray:
+            #if len(eachLine)>1:
+                #x,y = eachLine.split(',')
+                #xar.append(int(x))
+               # yar.append(int(y))
+        a.clear()
+        a.plot(pltXaxes,pltYaxes)
 
 
 ########################### PAGE FUNCTION #######################################+
@@ -586,14 +585,8 @@ class PageFive(tk.Frame):
         back.pack()
 
 
-
-
         label = ttk.Label(self, text="Windspeed", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
-
-
-
-
 
         canvas = FigureCanvasTkAgg(f, master=self)
         canvas.draw()
@@ -770,7 +763,7 @@ def NewWindow():
 
 
 app = IDM_app()
-ani = animation.FuncAnimation(f,animate, interval=intchange)
+ani = animation.FuncAnimation(f,animate, interval=90000)
 
 
 # Remove header and force window size
